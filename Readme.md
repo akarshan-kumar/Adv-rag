@@ -1,4 +1,8 @@
+<<<<<<< HEAD:Readme.md
 # LLM Integration Example
+=======
+# LLM Advance Rag
+>>>>>>> 66542b4c55a68f4d2fb8821f928472d8e2379a3c:Readme
 
 ## Overview
 This repository demonstrates the integration of large language models (LLMs) using the LangChain framework and OpenAI's GPT-based APIs. It provides tools for building question-answering (QA) bots that can retrieve, process, and analyze textual data, such as PDF documents, using advanced AI models.
