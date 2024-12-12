@@ -1,8 +1,4 @@
-<<<<<<< HEAD:Readme.md
-# LLM Integration Example
-=======
 # LLM Advance Rag
->>>>>>> 66542b4c55a68f4d2fb8821f928472d8e2379a3c:Readme
 
 ## Overview
 This repository demonstrates the integration of large language models (LLMs) using the LangChain framework and OpenAI's GPT-based APIs. It provides tools for building question-answering (QA) bots that can retrieve, process, and analyze textual data, such as PDF documents, using advanced AI models.
@@ -13,7 +9,6 @@ This repository demonstrates the integration of large language models (LLMs) usi
 - **Document Chunking and Indexing**: Process PDF documents into smaller chunks and index them for retrieval.
 - **Query Expansion**: Expand user queries using advanced techniques for better information retrieval.
 - **Reranking**: Use a cross-encoder to rank retrieved documents based on relevance to the query.
-- **Seamless Integration**: Connect to OpenAI's GPT-based APIs for generating structured and meaningful answers.
 - **Streamlit Interface**: A user-friendly UI for uploading files and querying the indexed documents.
 
 ---
@@ -29,29 +24,18 @@ This repository demonstrates the integration of large language models (LLMs) usi
 - `pydantic`
 - `concurrent.futures`
 
-### System Requirements
-- Python 3.8+
-- OpenAI API key (added in `config.ini`)
-- Configuration file (`config.ini`):
-
-  ```ini
-  [general]
-  api_key = YOUR_API_KEY
-  chunk_size = 500
-  ```
-
 ---
 
 ## Installation
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/llm-integration-example.git
+   git clone https://github.com/akarshan-kumar/Adv-rag.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd llm-integration-example
+   cd Adv-rag
    ```
 
 3. Install dependencies:
@@ -79,13 +63,6 @@ This repository demonstrates the integration of large language models (LLMs) usi
 - Enter a question related to the uploaded document.
 - The app retrieves relevant chunks, processes them through the LLM, and provides an answer.
 
-### Example
-#### Question:
-"What is the CEO's name and his earnings? Are they aligned with market standards?"
-
-#### Answer:
-"The CEO's name is John Doe. His earnings are $1.2 million annually, which are aligned with market standards based on recent industry data."
-
 ---
 
 ## Project Structure
@@ -97,19 +74,7 @@ This repository demonstrates the integration of large language models (LLMs) usi
 
 ---
 
-## Future Enhancements
-- Support for additional file formats.
-- Enhanced error handling and logging.
-- Integration with other LLM providers.
-- Customizable chunking strategies.
-
----
-
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
-
-## Contact
-For further inquiries, please contact **[Your Name]** at [your-email@example.com].
-
