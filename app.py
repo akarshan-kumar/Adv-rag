@@ -3,6 +3,7 @@ from RagTool.rag import retrival
 import time
 import streamlit as st
 import os
+from concurrent.futures import ThreadPoolExecutor
 
 # Set a directory to save uploaded files
 UPLOAD_DIRECTORY = "PDF"
@@ -37,15 +38,21 @@ st1 = time.perf_counter()
 
 # Question input and processing
 if rg:  # Ensure rg is initialized before processing questions
-    userinput = st.text_input("Enter a question:")
+    userinput = st.text_input("Enter a list question separeted by commas:")
+    userinput = [us for us in userinput.split(',')]
     if userinput:
         # Process the user question
-        context = rg.mul_query_collection(userinput)
+        with ThreadPoolExecutor() as executor:
+            listOfContexts = list(executor.map(rg.mul_query_collection, userinput))
+                                  
         # context = rg.query_collection(userinput, query_expansion=False)
-        ans = get_answere(context, userinput)
+        with ThreadPoolExecutor() as executor:
+            listOfAns = list(executor.map(lambda args: get_answere(*args), zip(listOfContexts, userinput)))
+
+        ansdict = {k:v for k,v in zip(userinput,listOfAns)}
 
         # Display the answer
-        st.write(f"{ans}")
+        st.json(ansdict)
 
         # Log execution time
         en = time.perf_counter()
