@@ -40,19 +40,28 @@ st1 = time.perf_counter()
 if rg:  # Ensure rg is initialized before processing questions
     userinput = st.text_input("Enter a list question separeted by commas:")
     userinput = [us for us in userinput.split(',')]
+
+    def answeres(userinput):
+        context = rg.mul_query_collection(userinput)
+        ans = get_answere(userinput,context)
+        return userinput,ans
+
     if userinput:
         # Process the user question
-        with ThreadPoolExecutor() as executor:
-            listOfContexts = list(executor.map(rg.mul_query_collection, userinput))
+        # with ThreadPoolExecutor() as executor:
+        #     listOfContexts = list(executor.map(rg.mul_query_collection, userinput))
                                   
-        # context = rg.query_collection(userinput, query_expansion=False)
+        # # context = rg.query_collection(userinput, query_expansion=False)
+        # with ThreadPoolExecutor() as executor:
+        #     listOfAns = list(executor.map(lambda args: get_answere(*args), zip(listOfContexts, userinput)))
+
         with ThreadPoolExecutor() as executor:
-            listOfAns = list(executor.map(lambda args: get_answere(*args), zip(listOfContexts, userinput)))
+            listOfAns = list(executor.map(answeres, userinput))
 
         ansdict = {k:v for k,v in zip(userinput,listOfAns)}
 
         # Display the answer
-        st.json(ansdict)
+        st.json(listOfAns)
 
         # Log execution time
         en = time.perf_counter()
